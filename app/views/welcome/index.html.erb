@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1>What did you do today?</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select an Activity
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <% @activities.each do |activity| %>
+          <li class="nav-item <%= active_class(root_path) %>">
+          <%= link_to activity.activity_description, new_welcome_path(activity.activity_type), remote: true, class: 'dropdown-item' %>
+        <% end %>
+      </div>
+    </div>
+
+    <%= render "application/activity_modal" %>
+  </div>
+  <div id="TodaysActivities" class="col-sm-4 empty">
+    <%= render "welcome/todays_activities" %>
+  </div>
+  <div class="hidden-sm-down col-md-4">
+  </div>
+</div>

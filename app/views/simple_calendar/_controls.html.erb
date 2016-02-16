@@ -1,0 +1,12 @@
+<div class="calendar-controls">
+  <div class="pull-xs-right form-inline">
+    <div class="btn-group">
+      <%= link_to "<< Previous", { start_date: date_range.first - 1.day }, class: "btn btn-sm btn-primary" %>
+      <%= link_to "Today", { start_date: Date.today }, class: "btn btn-sm btn-secondary" %>
+      <%= link_to "Next >>", { start_date: date_range.last + 1.day }, class: "btn btn-sm btn-primary" %>
+    </div>
+  </div>
+  <%= yield %>
+</div>
+
+

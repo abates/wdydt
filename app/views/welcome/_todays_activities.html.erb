@@ -1,0 +1,5 @@
+<% if @today.length == 0 %>
+<p>I guess nothing has happened!</p>
+<% else %>
+<%= render "calendar/activities", activities: @today %>
+<% end %>

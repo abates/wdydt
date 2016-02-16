@@ -1,0 +1,5 @@
+Description:
+    Generates a plugin controller.
+
+Example:
+    ./script/rails generate wdydt_plugin_controller invoices index generate

@@ -1,0 +1,16 @@
+<% content_for :authenticated_content do %>
+<div class="page-header"><h1><%= @activity_type.title %></h1></div>
+<ul class="nav nav-tabs">
+  <li class="nav-item"><%= link_to activities_path, class: 'nav-link' do %><%= fa_icon "th-list" %> List<% end %></li>
+  <li class="nav-item">
+  <%= link_to new_activity_path, 'data-target' => 'ActivityModal', class: 'nav-link', remote: true do %>
+      <%= fa_icon "plus" %> Add New
+    <% end %>
+  </li>
+</ul>
+
+<div class="row">
+  <div class="col-xs-12"><%= content_for?(:activities_content) ? yield(:activities_content) : yield %></div>
+</div>
+<% end %>
+<%= render template: "layouts/authenticated" %>

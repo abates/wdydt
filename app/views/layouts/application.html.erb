@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Wdydt</title>
+    <%= favicon_link_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>
+  </head>
+  <body>
+    <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+      <div class="container">
+        <a class="navbar-brand" href="http://andrewbates.co/"><%= image_tag("logo.png") %></a>
+        <ul class="nav navbar-nav">
+          <li class="nav-item <%= active_class(root_path) %>">
+            <a class="nav-link" href="<%= root_path %>">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+        <button class="navbar-toggler pull-xs-right hidden-md-up" type="button" data-toggle="collapse" data-target="#collapsing-sidebar">&#9776;</button>
+      </div>
+      <div class="container">
+        <div id="collapsing-sidebar" class="collapse navbar-collapse">
+          <%= render 'navbar' %>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">
+      <%= content_for?(:content) ? yield(:content) : yield %>
+    </div>
+  </body>
+</html>
