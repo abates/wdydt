@@ -39,18 +39,26 @@ gem 'chartkick'
 gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'kaminari'
+gem 'gravtastic'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-github'
+gem "omniauth-google-oauth2"
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
+end
+
+group :test do
+  gem 'simplecov', :require => false
 end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
+  gem 'dotenv-rails'
 end
 
 group :development do

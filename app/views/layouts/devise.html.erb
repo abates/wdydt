@@ -1,0 +1,12 @@
+<% content_for user_signed_in? ? :authenticated_content : :content do %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <%= content_for?(:devise_content) ? yield(:devise_content) : yield %>
+  </div>
+</div>
+<% end %>
+<% if user_signed_in? %>
+<%= render template: "layouts/authenticated" %>
+<% else %>
+<%= render template: "layouts/application" %>
+<% end %>

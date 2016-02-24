@@ -14,12 +14,12 @@
       <% @activity_type.activity_fields.each do |field| %>
       <td><%= activity.send(field) %></td>
       <% end %>
-      <td><%= link_to edit_activity_path(activity), remote: true do %>
+      <td><%= link_to edit_activity_type_path(activity), remote: true do %>
         <%= fa_icon "edit" %>
         <% end %>
       </td>
       <td>
-        <%= link_to activity_path(activity), remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <%= link_to activity_type_path(activity), remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
         <%= fa_icon "trash" %>
         <% end %>
       </td>

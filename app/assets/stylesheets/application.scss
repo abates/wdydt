@@ -4,11 +4,34 @@
 @import "**/*";
 
 body {
-  padding-top: 60px;
+  padding-top: 65px;
 }
 
 .page-header {
   border-bottom: 1px solid #eee;
   margin-bottom: 18px;
+}
+
+.hr {
+  margin-top: 1em;
+  border-top: 1px solid #aaa;
+  text-align: center;
+
+  .hr-label {
+    position: relative;
+    font-size: 18px;
+    top: -0.9em;
+    background-color: #fff;
+    padding-left: 1em;
+    padding-right: 1em;
+    color: #aaa;
+  }
+}
+
+.has-error {
+  @extend .has-danger;
+  input {
+    @extend .form-control-danger
+  }
 }
 

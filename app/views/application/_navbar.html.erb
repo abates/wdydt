@@ -1,7 +1,7 @@
 <ul class="nav navmenu">
   <li class="nav-heading">Manage Activities</li>
   <% ActivityPlugin.all.values.each do |activity| %>
-  <li class="nav-item"><%= link_to activity.title, activities_path(activity.activity_type), class: "nav-link" %></li>
+  <li class="nav-item"><%= link_to activity.title, activity_types_path(activity.activity_type), class: "nav-link" %></li>
   <% end %>
   <li class="nav-heading">Calendar</li>
   <li class="nav-item"><%= link_to "Day", calendar_day_path, class: "nav-link" %></li>

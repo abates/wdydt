@@ -1,0 +1,33 @@
+
+.nav-dropdown.open {
+  background: #232931;
+  opacity: 1;
+}
+
+.nav-dropdown {
+  a {
+    color: white;
+
+    img {
+      padding-top: 0px;
+      padding-right: 6px;
+      padding-bottom: 0px;
+      padding-left: 6px;
+    }
+  }
+
+  .dropdown-menu {
+    background: #232931;
+    padding-top: 0px;
+    margin-top: 0px;
+
+    .dropdown-item {
+      background: #232931;
+    }
+
+    .dropdown-item:hover {
+      color: white;
+      background: #232931;
+    }
+  }
+}

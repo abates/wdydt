@@ -1,0 +1,19 @@
+
+<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, class: "authentication-form" }) do |f| %>
+  <h3>Resend confirmation instructions</h3>
+  <%= f.error_notification %>
+  <%= f.full_error :confirmation_token %>
+
+  <%= f.input :email, wrapper: :vertical_form, label_html: { :class => "sr-only"} do %>
+    <div class="input-group">
+      <div class="input-group-addon"><%= fa_icon "user" %></div>
+      <%= f.input_field :email, required: true, autofocus: true, placeholder: 'Email Address', class: "form-control" %>
+    </div>
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Resend confirmation instructions", class: "btn btn-lg btn-primary btn-block" %>
+  </div>
+  <%= render "devise/shared/links" %>
+<% end %>
+

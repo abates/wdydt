@@ -1,4 +1,5 @@
 class AuthenticatedController < ApplicationController
+  before_action :authenticate_user!
   before_action :date_setup
 
   private

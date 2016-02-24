@@ -22,5 +22,10 @@ module WDYDT
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    config.action_mailer.default_url_options = { host: ENV['MAILER_HOST_NAME'] }
+    ActionMailer::Base.smtp_settings = {  
+      :address              => ENV['MAILER_SMTP_HOST'],
+      :port                 => ENV['MAILER_SMTP_PORT'],  
+    }
   end
 end

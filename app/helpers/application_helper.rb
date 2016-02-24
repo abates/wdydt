@@ -23,11 +23,11 @@ module ApplicationHelper
 
     specific_class = case type
                      when "notice"
-                       "success"
+                       "alert-success"
                      when "alert"
-                       "danger"
+                       "alert-danger"
                      when "flash"
-                       "info"
+                       "alert-info"
                      end
 
     content_tag(:div, class: "alert #{specific_class}", role: "alert") do

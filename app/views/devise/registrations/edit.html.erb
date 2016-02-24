@@ -1,0 +1,55 @@
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <h3>Edit <%= resource_name.to_s.humanize %></h3>
+  <%= f.error_notification %>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div class="alert alert-info" role="alert">
+      Currently waiting confirmation for: <strong><%= resource.unconfirmed_email %></strong>
+    </div>
+  <% end %>
+
+  <%= f.input :email, wrapper: :vertical_form, label_html: { :class => "sr-only"} do %>
+    <div class="input-group">
+      <div class="input-group-addon"><%= fa_icon "user" %></div>
+      <%= f.input_field :email, required: true, autofocus: true, placeholder: 'Email Address', class: "form-control" %>
+    </div>
+  <% end %>
+
+  <%= f.input :name, wrapper: :vertical_form, label_html: { :class => "sr-only"} do %>
+    <div class="input-group">
+      <div class="input-group-addon"><%= fa_icon "user" %></div>
+      <%= f.input_field :name, required: true, placeholder: 'Name', class: "form-control" %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <div>Connected Accounts</div>
+    <div class="center-block">
+    <%- resource.identities.each do |identity| %>
+      <%= social_icon identity.provider %>
+    <% end -%>
+    </div>
+  </div>
+
+  <% if resource.unused_providers.size > 0 %>
+  <div class="form-group">
+    <div>Connect additional Accounts</div>
+    <div class="center-block">
+    <%- resource.unused_providers.each do |provider| %>
+      <%= link_to_social_login provider %>
+    <% end -%>
+    </div>
+  </div>
+  <% end -%>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Update", class: "btn btn-lg btn-primary btn-block" %>
+  </div>
+
+  <h3>Cancel my account</h3>
+
+  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+  <%= link_to "Back", :back %>
+<% end %>

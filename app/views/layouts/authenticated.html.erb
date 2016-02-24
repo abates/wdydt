@@ -2,9 +2,6 @@
 <div class="row">
   <div class="hidden-sm-down col-md-2 sidebar"><%= render 'navbar' %></div>
   <div class="col-sm-12 col-md-10 col-md-offset-2 main">
-    <% flash.each do |f| %>
-    <%= flash_tag f %>
-    <% end %>
     <%= content_for?(:authenticated_content) ? yield(:authenticated_content) : yield %>
   </div>
 </div>

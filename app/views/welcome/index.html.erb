@@ -1,27 +1,13 @@
 <div class="row">
-  <div class="col-xs-12">
-    <h1>What did you do today?</h1>
-  </div>
-</div>
-<div class="row">
-  <div class="col-sm-4">
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Select an Activity
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <% @activities.each do |activity| %>
-          <li class="nav-item <%= active_class(root_path) %>">
-          <%= link_to activity.activity_description, new_welcome_path(activity.activity_type), remote: true, class: 'dropdown-item' %>
-        <% end %>
-      </div>
-    </div>
+  <div class="col-md-2 hidden-sm-down"></div>
+  <div class="col-md-8">
+    <h1>Welcome</h1>
+    <p>Welcome to What Did You Do Today (WDYDT).  WDYDT is a tool for keeping track of 
+    everything you do in a day.  It can be used for time management, tracking
+    work performed in order to invoice and also for tracking expenses.  In fact,
+    just about anything can be tracked in WDYDT.</p>
 
-    <%= render "application/activity_modal" %>
+    <p>To get started create an account or login!</p>
   </div>
-  <div id="TodaysActivities" class="col-sm-4 empty">
-    <%= render "welcome/todays_activities" %>
-  </div>
-  <div class="hidden-sm-down col-md-4">
-  </div>
+  <div class="col-md-2 hidden-sm-down"></div>
 </div>
