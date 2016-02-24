@@ -16,7 +16,7 @@ module DeviseHelper
   end
 
   def link_to_social_login provider
-    link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-social-icon btn-#{provider_name(provider)}" do 
+    link_to user_omniauth_authorize_path(provider), class: "btn btn-social-icon btn-#{provider_name(provider)}" do 
       content_tag :span, class: "fa fa-#{provider_name(provider)}" do
       end
     end
