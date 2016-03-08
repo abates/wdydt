@@ -4,7 +4,7 @@ class ActivitiesController < AuthenticatedController
   before_action :set_activity, except: [ :index, :new, :create ]
 
   def index
-    @activities = ActivityPlugin.all.values
+    @activity_types = ActivityType.all
     @today = Activity.all.where(day: Date.today)
   end
 end

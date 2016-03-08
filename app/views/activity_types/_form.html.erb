@@ -2,8 +2,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <% @activity_type.activity_form_fields.each do |field| %>
-    <%= f.input field %>
+    <% @activity_type.fields.each do |field| %>
+    <%= f.input field.name %>
     <% end %>
   </div>
 

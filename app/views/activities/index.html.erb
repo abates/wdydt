@@ -10,9 +10,9 @@
         Select an Activity
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <% @activities.each do |activity| %>
+        <% @activity_types.each do |activity_type| %>
           <li class="nav-item <%= active_class(root_path) %>">
-          <%= link_to activity.activity_description, new_activity_path(activity.activity_type), remote: true, class: 'dropdown-item' %>
+          <%= link_to activity_type.plural_description, new_activity_path(activity_type.table_name), remote: true, class: 'dropdown-item' %>
         <% end %>
       </div>
     </div>

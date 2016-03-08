@@ -6,6 +6,22 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+t = ActivityType.create(name: "Task", plural_description: "Worked on a task", singular_description: "Worked on \#\{task\}")
+t.fields << ActivityField.create(name: "hours", field_type: "decimal")
+t.fields << ActivityField.create(name: "notes", field_type: "text")
+
+t = ActivityType.create(name: "Expense", plural_description: "Paid for something", singular_description: "Paid for \#\{category\}")
+t.fields << ActivityField.create(name: "category", field_type: "string")
+t.fields << ActivityField.create(name: "amount", field_type: "decimal")
+t.fields << ActivityField.create(name: "notes", field_type: "text")
+
+t = ActivityType.create(name: "Mile", plural_description: "Drove somewhere", singular_description: "Drove from \#\{origin\} to \#\{destination\}")
+t.fields << ActivityField.create(name: "distance", field_type: "decimal")
+t.fields << ActivityField.create(name: "origin", field_type: "string")
+t.fields << ActivityField.create(name: "destination", field_type: "string")
+t.fields << ActivityField.create(name: "notes", field_type: "text")
+
+=begin
 Expense.create!(day: '2015-04-08 ', notes: 'Paid Intuit for QuickBooks', amount: 7.99, category: "Quickbooks")
 Expense.create!(day: '2015-05-07 ', notes: 'Paid Intuit for QuickBooks', amount: 7.99, category: "Quickbooks")
 Expense.create!(day: '2015-06-08 ', notes: 'Paid Intuit for QuickBooks', amount: 7.99, category: "Quickbooks")
@@ -111,3 +127,4 @@ Task.create!(task: "2.3.14  Ongoing DSS Management", day: "2015-11-24", hours: 3
 Task.create!(task: "2.3.14  Ongoing DSS Management", day: "2015-11-30", hours: 3)
 Task.create!(task: "2.3.14  Ongoing DSS Management", day: "2015-11-30", hours: 3)
 Task.create!(task: "2.3.14  Ongoing DSS Management", day: "2015-12-01", hours: 3)
+=end

@@ -8,7 +8,7 @@ module ActivitiesCrud
 
   # GET /activities/new
   def new
-    @activity = @activity_type.new
+    @activity = @activity_type.activity_class.new
   end
 
   # GET /activities/1/edit
@@ -73,7 +73,7 @@ module ActivitiesCrud
   end
 
   def set_activity_type
-    @activity_type = ActivityPlugin.find(params[:activity_type])
+    @activity_type = ActivityType.where(class_name: params[:activity_type].classify).first
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

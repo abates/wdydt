@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217203410) do
+ActiveRecord::Schema.define(version: 20160302201246) do
 
   create_table "activities", force: :cascade do |t|
     t.date     "day"
@@ -21,16 +21,27 @@ ActiveRecord::Schema.define(version: 20160217203410) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "days", force: :cascade do |t|
-    t.datetime "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "activity_fields", force: :cascade do |t|
+    t.integer  "activity_type_id"
+    t.string   "name"
+    t.string   "field_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
-  create_table "expenses", force: :cascade do |t|
-    t.string   "category"
-    t.decimal  "amount"
-    t.text     "notes"
+  add_index "activity_fields", ["activity_type_id"], name: "index_activity_fields_on_activity_type_id"
+
+  create_table "activity_types", force: :cascade do |t|
+    t.string   "name"
+    t.string   "class_name"
+    t.string   "plural_description"
+    t.string   "singular_description"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "days", force: :cascade do |t|
+    t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -53,25 +64,8 @@ ActiveRecord::Schema.define(version: 20160217203410) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id"
 
-  create_table "mileage", force: :cascade do |t|
-    t.decimal  "distance"
-    t.string   "origin"
-    t.string   "destination"
-    t.text     "notes"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "projects", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "tasks", force: :cascade do |t|
-    t.string   "task"
-    t.decimal  "hours"
-    t.text     "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
