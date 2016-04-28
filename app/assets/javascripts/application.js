@@ -15,4 +15,4 @@
 //= require tether
 //= require bootstrap-sprockets
 //= require initialize
-
+//= require infinite_paging

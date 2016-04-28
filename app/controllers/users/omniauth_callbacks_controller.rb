@@ -1,7 +1,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def self.provides_callback_for(provider)
     define_method provider.to_sym do
-      generic_callback('#{provider}')
+      generic_callback("#{provider}")
     end
   end
 
@@ -10,7 +10,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def generic_callback provider
-    @identity = Identity.find_for_oauth env["omniauth.auth"]
+    @identity = Identity.find_for_oauth request.env["omniauth.auth"]
 
     @user = @identity.user || current_user
 
@@ -22,8 +22,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         email: @identity.email, 
         name: @identity.name,
       )
-    elsif @user.email.blank? && @identity.email
-      @user.update_attribute( :email, @identity.email)
     end
 
     if @user.persisted?

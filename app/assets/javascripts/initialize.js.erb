@@ -1,5 +1,39 @@
+jQuery.extend({
+  getQueryParameters : function(l) {
+    var hash = {}
 
-<% self.class.include Rails.application.routes.url_helpers %>
+    l = l || document.location.search;
+    if (l.includes("?")) {
+      l = l.split(/\?/)[1];
+    }
+
+    if (l != "") {
+      l.split("&").forEach(function(p) {
+        p = p.split("=");
+        if (/^\d+$/.test(p[1]) || /^\d+\.\d+$/.test(p[1])) {
+          p[1] = Number(p[1]);
+        }
+        hash[p[0]] = p[1];
+      });
+    }
+    return hash;
+  },
+
+  getUpdatedUrl : function(params) {
+    originalParams = this.getQueryParameters();
+    console.log("originalParams: ", originalParams);
+    $.extend(originalParams, params);
+    var search = "";
+    for (k in originalParams) {
+      if (search != "") {
+        search += "&";
+      }
+      console.log("Adding ", k, " value of ", originalParams[k], " from ", originalParams);
+      search += (k + "=" + originalParams[k]);
+    }
+    return location.origin + location.pathname + "?" + search;
+  }
+});
 
 $(document).ready(function() {
   $('.pagination .disabled a, .pagination .active a').on('click', function(e) {

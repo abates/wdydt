@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Activity type:</strong>
+  <%= @activity_validator.activity_type %>
+</p>
+
+<p>
+  <strong>Activity field:</strong>
+  <%= @activity_validator.activity_field %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @activity_validator.description %>
+</p>
+
+<p>
+  <strong>Formula:</strong>
+  <%= @activity_validator.formula %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @activity_validator.message %>
+</p>
+
+<%= link_to 'Edit', edit_activity_validator_path(@activity_validator) %> |
+<%= link_to 'Back', activity_validators_path %>

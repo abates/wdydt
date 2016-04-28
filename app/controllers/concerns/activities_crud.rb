@@ -1,11 +1,6 @@
 module ActivitiesCrud
   extend ActiveSupport::Concern
 
-  # GET /activities/1
-  # GET /activities/1.json
-  def show
-  end
-
   # GET /activities/new
   def new
     @activity = @activity_type.activity_class.new
@@ -18,13 +13,13 @@ module ActivitiesCrud
   # POST /activities
   # POST /activities.json
   def create
-    @activity = @activity_type.new(activity_params)
+    @activity = @activity_type.activity_class.new(activity_params)
 
     respond_to do |format|
       if @activity.save
-        format.html { redirect_to activities_path(@activity_type.activity_type), notice: "#{@activity_type.name.humanize} was successfully created." }
+        format.html { redirect_to activities_path(@activity_type.table_name, @activity), notice: "#{@activity_type.name.humanize} was successfully created." }
         format.json { render :show, status: :created, location: @activity }
-        format.js { render :update }
+        format.js { render :create }
       else
         format.html { render :new }
         format.json { render json: @activity.errors, status: :unprocessable_entity }
@@ -38,7 +33,7 @@ module ActivitiesCrud
   def update
     respond_to do |format|
       if @activity.update(activity_params)
-        format.html { redirect_to activities_path(@activity_type.activity_type), notice: "#{@activity_type.name.humanize} was successfully updated." }
+        format.html { redirect_to activities_path(@activity_type.table_name, @activity.id), notice: "#{@activity_type.name.humanize} was successfully updated." }
         format.json { render :show, status: :ok, location: @activity }
         format.js { render :update }
       else
@@ -54,9 +49,9 @@ module ActivitiesCrud
   def destroy
     @activity.destroy
     respond_to do |format|
-      format.html { redirect_to activities_path(@activity_type.activity_type), notice: "#{@activity_type.name.humanize} was successfully deleted." }
+      format.html { redirect_to activities_path(@activity_type.table_name), notice: "#{@activity_type.name.humanize} was successfully deleted." }
       format.json { head :no_content }
-      format.js { render :update }
+      format.js { render :destroy }
     end
   end
 
@@ -64,20 +59,20 @@ module ActivitiesCrud
     if @activity_type.nil?
       {}
     else
-      { activity_type: @activity_type.name.tableize }
+      { activity_type: @activity_type.table_name }
     end
   end
 
   def set_activity
-    @activity = @activity_type.find(params[:id])
+    @activity = @activity_type.activity_class.find(params[:id])
   end
 
   def set_activity_type
-    @activity_type = ActivityType.where(class_name: params[:activity_type].classify).first
+    @activity_type = ActivityType.where(class_name: params[:activity_type].classify).first || raise(ActiveRecord::RecordNotFound)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def activity_params
-    params.require(@activity_type.name.underscore).permit(@activity_type.activity_form_fields)
+    params.require(@activity_type.activity_class.name.underscore).permit(@activity_type.form_fields.map {|f| f.column_name})
   end
 end

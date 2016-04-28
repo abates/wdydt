@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "activities/new", type: :view do
+  setup_activity_view
+
   before(:each) do
-    assign(:activity, Activity.new())
+    assign(:activity, @activity_type1.activity_class.new)
   end
 
   it "renders new activity form" do

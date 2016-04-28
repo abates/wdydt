@@ -2,10 +2,10 @@
 <div class="activity">
   <%= activity.description %>
   <div class="pull-xs-right actions">
-    <%= link_to edit_activity_path(activity.activity_type, activity.specific), remote: true do %>
+    <%= link_to edit_activity_path(activity.activity_type.name.tableize, activity.specific), remote: true do %>
     <%= fa_icon "edit" %>
     <% end %>
-    <%= link_to activity_type_path(activity.activity_type, activity.specific), remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <%= link_to activity_path(activity.activity_type.name.tableize, activity.specific), remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
     <%= fa_icon "trash" %>
     <% end %>
   </div>

@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-4">
+    <h1><%= @activity_type.name.humanize %></h1>
+    <dl class="dl-horizontal">
+      <% @activity_type.form_fields.each do |field| %>
+      <dt class="col-sm-3"><%= field.name.humanize.capitalize %></dt>
+      <dd class="col-sm-9"><%= @activity.send(field.name) %></dd>
+      <% end %>
+    </dl>
+
+    <%= link_to 'Edit', edit_activity_path(@activity) %> |
+    <%= link_to 'Back', activities_path %>
+  </div>
+</div>

@@ -5,15 +5,10 @@ class Identity < ActiveRecord::Base
 
   def self.find_for_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |identity|
-      identity.accesstoken = auth.credentials.token
-      identity.refreshtoken = auth.credentials.refresh_token
       identity.name = auth.info.name
       identity.email = auth.info.email
-      identity.nickname = auth.info.nickname
-      identity.image = auth.info.image
-      identity.phone = auth.info.phone
-      identity.urls = (auth.info.urls || "").to_json
       identity.save!
     end
   end
 end
+

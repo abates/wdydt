@@ -1,0 +1,36 @@
+ul.nav-tabs {
+  background-color: #ddd;
+  border-bottom: 0px;
+  border-top: 1px solid #999;
+
+  li.nav-item {
+    margin-bottom:0;
+    margin-top:-1px;
+  }
+
+  li.nav-item > a {
+    color: #fff;
+    background-color: #0275D8;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    line-height: 20px;
+    border: 1px solid transparent;
+    -moz-border-radius:0px;
+    -webkit-border-radius:0px;
+    border-radius:0px;
+    -moz-border-radius-bottomright: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+
+  li.nav-item > a.active, li.nav-item > a.active:hover, li.nav-item > a.active:focus {
+    color: #555555;
+    cursor: default;
+    background-color: #ffffff;
+    border: 1px solid #999;
+    border-top-color: transparent;
+  }
+}

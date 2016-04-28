@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def active_class url
-    current_page?(url) ? "active" : ""
+  def active_class url, klass="active"
+    current_page?(url) ? "#{klass}" : ""
   end
 
   def link_to(name = nil, options = nil, html_options = nil, &block)

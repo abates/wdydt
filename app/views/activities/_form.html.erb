@@ -1,0 +1,13 @@
+<%= simple_form_for(@activity, url: specific_activity_path(@activity), remote: true) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <% @activity_type.form_fields.each do |field| %>
+    <%= f.input field.name %>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

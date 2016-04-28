@@ -1,0 +1,2 @@
+$("#ActivityModal").modal("hide");
+$('#TodaysActivities').append('<%= escape_javascript(render partial: "activity_row", locals: { activity: @activity }) %>');

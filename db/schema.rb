@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160302201246) do
+ActiveRecord::Schema.define(version: 20160426123021) do
 
   create_table "activities", force: :cascade do |t|
     t.date     "day"
@@ -40,10 +40,23 @@ ActiveRecord::Schema.define(version: 20160302201246) do
     t.datetime "updated_at",           null: false
   end
 
-  create_table "days", force: :cascade do |t|
-    t.datetime "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "activity_validators", force: :cascade do |t|
+    t.integer  "activity_type_id"
+    t.integer  "activity_field_id"
+    t.text     "description"
+    t.text     "formula"
+    t.text     "message"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "activity_validators", ["activity_field_id"], name: "index_activity_validators_on_activity_field_id"
+  add_index "activity_validators", ["activity_type_id"], name: "index_activity_validators_on_activity_type_id"
+
+  create_table "expenses", force: :cascade do |t|
+    t.string  "category"
+    t.decimal "amount"
+    t.text    "notes"
   end
 
   create_table "identities", force: :cascade do |t|
@@ -64,10 +77,17 @@ ActiveRecord::Schema.define(version: 20160302201246) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id"
 
-  create_table "projects", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "mileage", force: :cascade do |t|
+    t.decimal "distance"
+    t.string  "origin"
+    t.string  "destination"
+    t.text    "notes"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.string  "task"
+    t.decimal "hours"
+    t.text    "notes"
   end
 
   create_table "users", force: :cascade do |t|

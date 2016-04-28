@@ -1,1 +1,10 @@
-<%= render template: 'activity_types/edit' %>
+var html = '' +
+'<div class="modal-header">' +
+  '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+  '<h4 class="modal-title">Edit <%= @activity_type.name.humanize %></h4>' +
+'</div>' +
+'<%= escape_javascript(render partial: 'activities/form') %>';
+$("#ActivityModal .modal-dialog .modal-content").html(html);
+$("#ActivityModal .modal-dialog .modal-content .form-inputs").addClass('modal-body');
+$("#ActivityModal .modal-dialog .modal-content .form-actions").addClass('modal-footer');
+$("#ActivityModal").modal("show");

@@ -1,0 +1,19 @@
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <% @activity_type.fields.each do |field| %>
+      <th><%= field.name %></th>
+      <% end %>
+      <th colspan="1">
+        <%= link_to new_activity_path, 'data-target' => 'ActivityModal', class: 'pull-right', remote: true do %>
+        <%= fa_icon "plus" %><span class="hidden-sm-down"> Add New</span>
+        <% end %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render "activities/activity_rows" %>
+  </tbody>
+</table>
+

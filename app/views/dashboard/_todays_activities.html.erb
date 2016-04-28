@@ -1,0 +1,10 @@
+<% if @todays_activities.length == 0 %>
+<p>I guess nothing has happened!</p>
+<% else %>
+<div id="todays-activities">
+<% @todays_activities.each do |activity| %>
+<%= render partial: "dashboard/activity_row",  locals: { activity: activity } %>
+<% end %>
+</div>
+<% end %>
+

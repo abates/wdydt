@@ -1,0 +1,2 @@
+$("#ActivityModal").modal("hide");
+$('#<%= @activity.activity_type.name %><%= @activity.id %>').replaceWith('<%= escape_javascript(render partial: "activity_row", locals: { activity: @activity }) %>');

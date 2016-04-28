@@ -1,0 +1,16 @@
+<tr id="<%= activity.activity_type.name %><%= activity.id %>">
+  <% activity.activity_type.fields.each do |field| %>
+  <td><%= activity.send(field.column_name) %></td>
+  <% end %>
+  <td>
+    <span class="pull-right text-nowrap">
+      <%= link_to edit_activity_path(activity), remote: true do %>
+      <%= fa_icon "edit" %>
+      <% end %>
+      <%= link_to activity_path(activity), remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <%= fa_icon "trash" %>
+      <% end %>
+    </span>
+  </td>
+</tr>
+

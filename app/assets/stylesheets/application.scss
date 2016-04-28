@@ -4,7 +4,11 @@
 @import "**/*";
 
 body {
-  padding-top: 65px;
+  padding-top: 60px;
+
+  #content-pane {
+    padding-bottom: 60px;
+  }
 }
 
 .page-header {
