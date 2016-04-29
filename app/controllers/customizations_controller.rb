@@ -1,2 +1,0 @@
-class CustomizationsController < ApplicationController
-end

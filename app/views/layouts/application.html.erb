@@ -29,6 +29,7 @@
           <a class="nav-link dropdown-toggle" data-toggle="dropdown"><%= image_tag current_user.gravatar_url %><%= current_user.name %><%= fa_icon "down-open" %></a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
             <%= link_to 'Profile', edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to 'Customize', activity_types_path, class: "dropdown-item" %>
             <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </div>
@@ -43,6 +44,7 @@
             <li class="nav-item"><a class="nav-link" href="#">About</a></li>
             <% if user_signed_in? %>
             <li class="nav-item"><%= link_to 'Profile', edit_user_registration_path, class: "nav-link" %></li>
+            <li class="nav-item"><%= link_to 'Customize', activity_types_path, class: "nav-link" %></li>
             <li class="nav-item"><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
             <% else %>
             <li class="nav-item"><%= link_to 'Login', new_user_session_path, class: "nav-link" %></li>

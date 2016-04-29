@@ -1,7 +1,10 @@
-#ActivityTable {
-  table {
-    th {
-      border-top: none;
+.activity-deck {
+  .card-deck {
+    .card {
+      .card-header {
+        color: #0275d8;
+        font-weight: bold;
+      }
     }
   }
 }

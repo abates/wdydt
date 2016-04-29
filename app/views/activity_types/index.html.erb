@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="pull-left">Activity Types</h1>
+    <%= link_to new_activity_type_path, class: 'pull-right' do %>
+    <%= fa_icon "plus" %><span class="hidden-sm-down"> Add New</span>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="activity-deck card-deck-wrapper">
+      <div class="card-deck">
+        <% @activity_types.each do |activity_type| %>
+        <div class="card">
+          <div class="card-header">
+            <%= activity_type.name %>
+            <%= link_to activity_type_path(activity_type), class: "pull-right", remote: true, method: :delete, data: { confirm: "This action cannot be undone.  All #{activity_type.name.pluralize} will be immediately and permanently deleted.  Continue?" } do %>
+            <%= fa_icon "trash" %>
+            <% end %>
+          </div>
+          <div class="card-block">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Type
+                    <%= link_to activity_type_fields_path(activity_type), class: "pull-right" do %>
+                    <%= fa_icon "edit" %>
+                    <% end %>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <% activity_type.fields.each do |field| %>
+                  <tr><td><%= field.name %></td><td><%= field.field_type %></td></tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

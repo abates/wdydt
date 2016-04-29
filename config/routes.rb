@@ -24,7 +24,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :customizations
+  resources :activity_types do
+    resources :fields
+  end
 
   authenticated do
     root to: "dashboard#index", as: :authenticated_root
